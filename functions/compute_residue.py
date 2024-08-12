@@ -1,8 +1,9 @@
 import pandas as pd
 
-#from functions.distribute_residual_energy import *
-from functions.service_residual_load import *
 import config
+
+from functions.distribute_residual_energy import *
+from functions.service_residual_load import *
 
 def compute_residue(df):
     '''
@@ -25,7 +26,7 @@ def compute_residue(df):
     for i in range(len(df)):
         if residue['Residual load profile [kW]'][i] > 0.0:
             service_residual_load(df, residue, i)
-        else:
-            pass #distribute_residual_energy(df, residue, i)
+        elif residue['Residual renewables profile [kW]'][i] > 0.0:
+            distribute_residual_energy(df, residue, i)
 
-    return df, residue
+    return df
