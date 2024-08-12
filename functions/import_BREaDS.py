@@ -1,8 +1,11 @@
 import pandas as pd
 
 def import_inputBREaDS(filename):
+    '''
+    This function imports input data (load profile data and renewables profile data) into Python from one sheet of a Excel worksheet.
+    '''
     df = pd.read_excel(io = filename,
-                       sheet_name = "inputBREaDS")
+                       sheet_name = 'inputBREaDS')
     df['Datetime'] = pd.to_datetime(df[['Year', 
                                         'Month', 
                                         'Day', 
