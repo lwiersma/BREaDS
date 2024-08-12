@@ -3,9 +3,7 @@ This is the code repository for the Battery, Renewable Energy, and Demand Simula
 
 It explores several narratives, which can be modeled separately with the same input dataset.
 
-Narrative I: 
-
-Contact Lars Wiersma (Resilience and Sustainability Consultant, lars.wiersma@aecom.com) for comments or questions about this repository.
+Contact Lars Wiersma (Resilience and Sustainability Consultant Benelux, lars.wiersma@aecom.com) for comments or questions about this repository.
 
 Other contact persons are Luke Aldred (Environmental Director Benelux, luke.aldred@aecom.com) and Rens Accou (ESG Consultant Benelux, rens.accou@aecom.com).
 
