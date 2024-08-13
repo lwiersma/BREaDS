@@ -1,6 +1,6 @@
 import pandas as pd
 
-from dictionaries import battery_config
+from dictionaries.battery_config import *
 
 def distribute_residual_energy(df, 
                                residue, 

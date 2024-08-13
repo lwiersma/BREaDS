@@ -1,9 +1,9 @@
 import pandas as pd
 
-from dictionaries import battery_config
+from dictionaries.battery_config import *
 
-from functions import distribute_residual_energy
-from functions import service_residual_load
+from functions.distribute_residual_energy import *
+from functions.service_residual_load import *
 
 def compute_residue(df):
     '''

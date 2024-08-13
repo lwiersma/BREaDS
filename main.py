@@ -1,8 +1,8 @@
 import time
 
-from functions import import_BREaDS_dataset
-from functions import export_BREaDS_dataset
-from functions import compute_residue
+from functions.import_BREaDS_dataset import *
+from functions.export_BREaDS_dataset import *
+from functions.compute_residue import *
 
 filename = '/Users/larswiersma/Documents/Business/AECOM/BREaDS/BREaDS_Project_v1.xlsx'
 
