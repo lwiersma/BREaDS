@@ -1,7 +1,7 @@
 import pandas as pd
-from openpyxl import load_workbook
 
-def export_BREaDS(filename, df):
+def export_BREaDS_dataset(filename, 
+                         df):
     '''
     This function exports all simulation data into the Excel worksheet that has been used for importing data.
     '''

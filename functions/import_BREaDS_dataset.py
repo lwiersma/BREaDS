@@ -1,6 +1,6 @@
 import pandas as pd
 
-def import_inputBREaDS(filename):
+def import_BREaDS_dataset(filename):
     '''
     This function imports input data (load profile data and renewables profile data) into Python from one sheet of a Excel worksheet.
     '''
