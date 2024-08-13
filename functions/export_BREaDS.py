@@ -2,6 +2,9 @@ import pandas as pd
 from openpyxl import load_workbook
 
 def export_BREaDS(filename, df):
+    '''
+    This function exports all simulation data into the Excel worksheet that has been used for importing data.
+    '''
     with pd.ExcelWriter(filename, 
                         engine = 'openpyxl',
                         mode = 'a',
