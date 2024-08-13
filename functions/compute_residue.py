@@ -1,9 +1,9 @@
 import pandas as pd
 
-import config
+from dictionaries import battery_config
 
-from functions.distribute_residual_energy import *
-from functions.service_residual_load import *
+from functions import distribute_residual_energy
+from functions import service_residual_load
 
 def compute_residue(df):
     '''
@@ -13,10 +13,10 @@ def compute_residue(df):
     df = df.assign(
         **{
             'Load serviced by renewables [kW]': df[['Load profile [kW]',
-                                                    'Renewables profile [kW]']].min(axis=1),
+                                                    'Renewables profile [kW]']].min(axis = 1),
             'Load serviced by battery [kW]': 0.0,
             'Load serviced by grid [kW]': 0.0,
-            'State of charge battery [kWh]': config.initial_state,
+            'State of charge battery [kWh]': battery_config['initial_state'],
             'Charge battery with renewables [kW]': 0.0,
             'Charge battery with grid [kW]': 0.0,
             'Export to grid [kW]': 0.0
