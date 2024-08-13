@@ -1,6 +1,6 @@
 import pandas as pd
 
-import config
+from dictionaries import battery_config
 
 def service_residual_load(df, 
                           residue, 
@@ -8,22 +8,22 @@ def service_residual_load(df,
     '''
     This function services energy for the residual load profile. Priorities for energy services can be set up here.
     '''
-    if residue['Residual load profile [kW]'].loc[idx] <= df['State of charge battery [kWh]'].loc[idx]:
-        if residue['Residual load profile [kW]'].loc[idx] <= config.discharge_rate:
-            df.loc[idx, 'Load serviced by battery [kW]'] = residue['Residual load profile [kW]'].loc[idx]
+    if residue.loc[idx, 'Residual load profile [kW]'] <= df.loc[idx, 'State of charge battery [kWh]']:
+        if residue.loc[idx, 'Residual load profile [kW]'] <= battery_config['discharge_rate']:
+            df.loc[idx, 'Load serviced by battery [kW]'] = residue.loc[idx, 'Residual load profile [kW]']
         else:
-            df.loc[idx, 'Load serviced by battery [kW]'] = config.discharge_rate
-            df.loc[idx, 'Load serviced by grid [kW]'] = (residue['Residual load profile [kW]'].loc[idx] - config.discharge_rate)
+            df.loc[idx, 'Load serviced by battery [kW]'] = battery_config['discharge_rate']
+            df.loc[idx, 'Load serviced by grid [kW]'] = (residue.loc[idx, 'Residual load profile [kW]'] - battery_config['discharge_rate'])
     else:
-        if residue['Residual load profile [kW]'].loc[idx] <= config.discharge_rate:
-            df.loc[idx, 'Load serviced by battery [kW]'] = df['State of charge battery [kWh]'].loc[idx]
-            df.loc[idx, 'Load serviced by grid [kW]'] = (residue['Residual load profile [kW]'].loc[idx] - df['State of charge battery [kWh]'].loc[idx])
+        if residue.loc[idx, 'Residual load profile [kW]'] <= battery_config['discharge_rate']:
+            df.loc[idx, 'Load serviced by battery [kW]'] = df.loc[idx, 'State of charge battery [kWh]']
+            df.loc[idx, 'Load serviced by grid [kW]'] = (residue.loc[idx, 'Residual load profile [kW]'] - df.loc[idx, 'State of charge battery [kWh]'])
         else:
-            df.loc[idx, 'Load serviced by battery [kW]'] = config.discharge_rate
-            df.loc[idx, 'Load serviced by grid [kW]'] = (residue['Residual load profile [kW]'].loc[idx] - config.discharge_rate)
+            df.loc[idx, 'Load serviced by battery [kW]'] = battery_config['discharge_rate']
+            df.loc[idx, 'Load serviced by grid [kW]'] = (residue.loc[idx, 'Residual load profile [kW]'] - battery_config['discharge_rate'])
     
     if idx != df.index[-1]:
-        nh = idx + pd.Timedelta(hours=1)
-        df.loc[nh, 'State of charge battery [kWh]'] += (df['State of charge battery [kWh]'].loc[idx] - df['Load serviced by battery [kW]'].loc[idx]).astype(float)
+        nh = idx + pd.Timedelta(hours = 1)
+        df.loc[nh, 'State of charge battery [kWh]'] += (df.loc[idx, 'State of charge battery [kWh]'] - df.loc[idx, 'Load serviced by battery [kW]'])
     else:
         pass

@@ -2,8 +2,10 @@
 This dictionary contains the configurations of the battery.
 '''
 battery_config = {
-    'charge_rate': 800.0        # kW
-    'discharge_rate': 800.0     # kW
-    'battery_capacity': 2500    # kWh
-    'initial_state': 450        # kWh
+    'charge_rate': 800.0,               # kW    Provide one decimal.
+    'charge_efficiency': 0.95,          #
+    'discharge_rate': 800.0,            # kW    Provide one decimal.
+    'discharge_efficiency': 0.95,       #
+    'battery_capacity': 2500.0,         # kWh   Provide one decimal.
+    'initial_state': 450.0  ,           # kWh   Provide one decimal.
 }
