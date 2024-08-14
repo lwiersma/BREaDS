@@ -1,5 +1,5 @@
 '''
-This dictionary contains the configurations of the battery.
+This dictionary contains the configurations of the battery in the local energy system.
 '''
 battery_config = {
     'charge_rate': 800.0,               # kW    Provide one decimal.
